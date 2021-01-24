@@ -26,3 +26,4 @@ page_obj = urllib.request.urlopen(
 raw_data = page_obj.read()
 
 # 3) Convertendo tabelas para dataframe
+
