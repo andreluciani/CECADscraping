@@ -106,6 +106,7 @@ def CECADscraping(lista_UF,lista_dados)
     dfs_pessoa = []
     estados=[]
     infos=[]
+    writer=pd.ExcelWriter('Planilha_Output.xlsx', engine='xlsxwriter')
 
     for i in range(len(lista_UF)):
         lista_municipios_UF=lista_municipios['Código Município Completo'][lista_municipios['UF']==uf_ibge].tolist()
@@ -140,9 +141,15 @@ def CECADscraping(lista_UF,lista_dados)
                     print('Erro na tentativa ' , i)
                     time.sleep(10)
                     continue
+            dados_familia.to_excel(writer,sheet_name=(dados_familia.columns[0][0], '[num de familias]')
+            dados_pessoa.to_excel(writer,sheet_name=(dados_familia.columns[0][0], '[num de pessoas]')
 
 
-            dfs_familia=dfs_familia.append(dados_familia)
-            dfs_pessoa=dfs_pessoa.append(dados_pessoa)
-            estados=estados.append(lista_municipios['Nome_UF'][lista_municipios['UF']==lista_UF[i]].iloc[[0]].tolist())
-            infos=infos.append(tab_familia.columns[0][0])
+
+    writer.save()
+
+#%% teste
+
+writerteste=pd.ExcelWriter('teste.xlsx',engine='xlsxwriter')
+teste[0].toexcel(writerteste,sheetname=teste[0].columns[0][0])
+writer.save()
