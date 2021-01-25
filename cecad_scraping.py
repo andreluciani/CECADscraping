@@ -92,10 +92,9 @@ while i < (len(lista_municipios_UF)):
         continue
 
 #%% 6) Salvando em excel
-writer=pd.ExcelWriter('Faixa de renda pessoa e familia completo.xlsx', engine='xlsxwriter')
+writer=pd.ExcelWriter('Planilha_Output.xlsx', engine='xlsxwriter')
 renda_familia.to_excel(writer, sheet_name='FaixaRendaFamilia')
 renda_pessoa.to_excel(writer, sheet_name='FaixaRendaPessoa')
 pop_rua_familia.to_excel(writer, sheet_name='PopRuaFamilia')
 pop_rua_pessoa.to_excel(writer, sheet_name='PopRuaPessoa')
 writer.save()
-
