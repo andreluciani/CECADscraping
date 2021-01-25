@@ -1,5 +1,9 @@
 # PyCharm configurations
 .idea/
 
+# VSCode configurations
+.vscode/
+
 # Environments
 venv/
+
