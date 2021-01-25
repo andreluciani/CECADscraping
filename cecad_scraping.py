@@ -3,7 +3,8 @@ import urllib.request
 import urllib
 import pandas as pd
 import time
-
+from tqdm import tqdm
+from tqdm import notebook
 
 #%% 1) Lendo a lista de municípios e transformando em lista (indexável)
 uf_ibge=35
@@ -98,10 +99,14 @@ renda_pessoa.to_excel(writer, sheet_name='FaixaRendaPessoa')
 pop_rua_familia.to_excel(writer, sheet_name='PopRuaFamilia')
 pop_rua_pessoa.to_excel(writer, sheet_name='PopRuaPessoa')
 writer.save()
-#%%
-lista_UF=[35,12]
-lista_dados = ['fx_rfpc','marc_sit_rua']
-def CECADscraping(lista_UF,lista_dados)
+#%% Criando a função
+
+def CECADscraping(lista_UF,lista_dados):
+    runs=0
+    for uf_ibge in (lista_UF):
+        runs= runs + len(lista_municipios['Código Município Completo'][lista_municipios['UF']==uf_ibge].tolist())
+    runs = runs * len(lista_dados)
+    pbar=notebook.tqdm(total=runs)
     dfs_familia = []
     dfs_pessoa = []
     estados=[]
@@ -114,8 +119,10 @@ def CECADscraping(lista_UF,lista_dados)
         for dado in (lista_dados):
             var1=dado
             var2=''
+            i=0
+            dados_familia = pd.DataFrame()
+            dados_pessoa = pd.DataFrame()
             while i < (len(lista_municipios_UF)):
-                uf_ibge=lista_UF[i]
                 try:
                     form_data = urllib.parse.urlencode({
                     'schema': schema,
@@ -134,21 +141,22 @@ def CECADscraping(lista_UF,lista_dados)
                     tab_pessoa = tables_list[1].dropna()  # separa a segunda tabela
                     dados_familia=dados_familia.append(tab_familia.iloc[[0]]) # Cria o df para familia
                     dados_pessoa=dados_pessoa.append(tab_pessoa.iloc[[0]]) # Cria o df para pessoa
-                    #print(i)
                     i+=1
+                    pbar.update(1)
                 except ValueError:
                     print('Esperando 10s pra tentar novamente...')
                     print('Erro na tentativa ' , i)
                     time.sleep(10)
                     continue
-            dados_familia.to_excel(writer,sheet_name=(dados_familia.columns[0][0], '[num de familias]')
-            dados_pessoa.to_excel(writer,sheet_name=(dados_familia.columns[0][0], '[num de pessoas]')
+            dados_familia.to_excel(writer,sheet_name=('Num. Famlias') + var1)
+            dados_pessoa.to_excel(writer,sheet_name=('Num. Pessoas') + var1)
 
 
     writer.save()
+    pbar.close()
+#%% teste da função
+lista_UF=[12]
+lista_dados = ['fx_rfpc','marc_sit_rua']
+CECADscraping(lista_UF,lista_dados)
 
-#%% teste
-
-writerteste=pd.ExcelWriter('teste.xlsx',engine='xlsxwriter')
-teste[0].toexcel(writerteste,sheetname=teste[0].columns[0][0])
-writer.save()
+# %%
