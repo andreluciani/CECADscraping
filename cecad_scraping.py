@@ -148,14 +148,14 @@ def CECADscraping(lista_UF,lista_dados):
                     print('Erro na tentativa ' , i)
                     time.sleep(10)
                     continue
-            dados_familia.to_excel(writer,sheet_name=('Num. Famlias') + var1)
-            dados_pessoa.to_excel(writer,sheet_name=('Num. Pessoas') + var1)
+            dados_familia.to_excel(writer,sheet_name=('Num. Famlias') + var1 + dados_familia.iloc[[0]].index[0][:2])
+            dados_pessoa.to_excel(writer,sheet_name=('Num. Pessoas') + var1 + dados_pessoa.iloc[[0]].index[0][:2])
 
 
     writer.save()
     pbar.close()
 #%% teste da função
-lista_UF=[12]
+lista_UF=[12,35]
 lista_dados = ['fx_rfpc','marc_sit_rua']
 CECADscraping(lista_UF,lista_dados)
 
