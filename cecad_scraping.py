@@ -2,6 +2,7 @@
 import urllib.request
 import urllib
 import pandas as pd
+# Necessário instalar 'odfpy' 
 
 #%% 1) Definindo opções pro request
 # OPÇÃO : name = value
@@ -37,5 +38,6 @@ tab_familia = tables_list[0].dropna()  # separa a primeira tabela
 tab_pessoa = tables_list[1].dropna()  # separa a segunda tabela
 
 #%% 4) Lendo a lista de municípios
+pd.read_excel("./RELATORIO_DTB_BRASIL_MUNICIPIO.ods",engine="odf")
 
 
