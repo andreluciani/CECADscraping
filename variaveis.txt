@@ -1,0 +1,57 @@
+var1 - descrição
+"cod_est_cadastral_fam" - Bloco 1 - Estado cadastral da família
+"fx_rft" - Bloco 1 - Faixa da renda total da família
+"fx_rfpc" - Bloco 1 - Faixa da renda familiar per capita
+"cod_forma_coleta_fam" - Bloco 1 - Forma de coleta
+"qtde_meses_desat_cat" - Bloco 1 - Número de meses após a última atualização cadastral
+"marc_pbf" - Bloco 1 - Recebe PBF família
+"cod_calcamento_domic_fam" - Bloco 2 - Calçamento em frente ao seu domicílio
+"cod_local_domic_fam" - Bloco 2 - Situação do domicílio
+"cod_especie_domic_fam" - Bloco 2 - Espécie do domicílio
+"cod_banheiro_domic_fam" - Bloco 2 - Existência de banheiro
+"cod_abaste_agua_domic_fam" - Bloco 2 - Forma de abastecimento de água
+"cod_destino_lixo_domic_fam" - Bloco 2 - Forma de coleta do lixo
+"cod_escoa_sanitario_domic_fam" - Bloco 2 - Forma de escoamento sanitário
+"cod_material_domic_fam" - Bloco 2 - Material predominante nas paredes externas do domicílio
+"cod_material_piso_fam" - Bloco 2 - Material predominante no piso do domicílio
+"cod_agua_canalizada_fam" - Bloco 2 - Água canalizada no domicílio
+"cod_iluminacao_domic_fam" - Bloco 2 - Tipo de iluminação
+"cod_familia_indigena_fam" - Bloco 3 - Família Indígena
+"ind_familia_quilombola_fam" - Bloco 3 - Família quilombola  
+"cod_raca_cor_pessoa" - Bloco 4 - Cor ou raça
+"cod_est_cadastral_memb" - Bloco 4 - Estado cadastral da pessoa
+"fx_idade" - Bloco 4 - Faixa etária
+"marc_pbf" - Bloco 4 - Recebe PBF pessoa
+"cod_parentesco_rf_pessoa" - Bloco 4 - Relação de parentesco com o responsável familiar
+"cod_sexo_pessoa" - Bloco 4 - Sexo
+"ind_trabalho_infantil_pessoa" - Bloco 4 - Pessoa com marcação de trabalho infantil
+"ind_ajuda_especializado_memb" - Bloco 6 - Recebe ajuda de cuidador especializado
+"ind_ajuda_familia_memb" - Bloco 6 - Recebe ajuda de alguém da família
+"ind_ajuda_instituicao_memb" - Bloco 6 - Recebe ajuda de instituição
+"ind_ajuda_nao_memb" - Bloco 6 - Não recebe ajuda de terceiros
+"ind_ajuda_outra_memb" - Bloco 6 - Recebe ajuda de outra forma
+"ind_ajuda_vizinho_memb" - Bloco 6 - Recebe ajuda de vizinho
+"ind_def_cegueira_memb" - Bloco 6 - Cegueira
+"ind_def_sindrome_down_memb" - Bloco 6 - Síndrome de Down
+"ind_def_fisica_memb" - Bloco 6 - Deficiência física
+"ind_def_mental_memb" - Bloco 6 - Deficiência mental ou intelectual
+"ind_def_surdez_leve_memb" - Bloco 6 - Surdez leve/moderada
+"ind_def_surdez_profunda_memb" - Bloco 6 - Surdez severa/profunda
+"ind_def_transtorno_mental_memb" - Bloco 6 - Transtorno/doença mental
+"ind_def_baixa_visao_memb" - Bloco 6 - Baixa visão
+"cod_deficiencia_memb" - Bloco 6 - Pessoa tem deficiência?
+"cod_ano_serie_frequenta_memb" - Bloco 7 - Ano e série do curso que a pessoa frequenta
+"cod_concluiu_frequentou_memb" - Bloco 7 - A pessoa concluiu o curso?
+"cod_curso_frequentou_pessoa_memb" - Bloco 7 - Curso mais elevado que a pessoa frequentou
+"cod_curso_frequenta_memb" - Bloco 7 - Curso que a pessoa frequenta
+"grau_instrucao" - Bloco 7 - Grau de instrução
+"ind_frequenta_escola_memb" - Bloco 7 - Pessoa frequenta escola
+"cod_sabe_ler_escrever_memb" - Bloco 7 - Pessoa sabe ler e escrever
+"cod_ano_serie_frequentou_memb" - Bloco 7 - Último ano e série do curso que a pessoa frequentou
+"cod_agricultura_trab_memb" - Bloco 8 - Atividade extrativista
+"cod_principal_trab_memb" - Bloco 8 - Função principal
+"cod_afastado_trab_memb" - Bloco 8 - Pessoa estava afastada na semana passada?
+"cod_trabalho_12_meses_memb" - Bloco 8 - Trabalho remunerado nos últimos 12 meses
+"cod_trabalhou_memb" - Bloco 8 - Pessoa trabalhou na semana passada?
+"ind_parc_mds_fam" - Bloco 11 - Grupos Populacionais Tradicionais e Específicos
+"marc_sit_rua" - Bloco 12 - Situação de Rua
