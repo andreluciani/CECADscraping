@@ -1,4 +1,4 @@
-# CECADscrapping
+# CECADscraping
 
 ## Descrição
 
@@ -15,9 +15,10 @@ O código baixa e compila os dados de faixa de renda (por família e por pessoa)
 
 ### Utilização
 
+A utilização deve ser feita com as linhas finais do arquivo, selecionando as regiões para download dos dados e os dados a serem baixados. Os arquivos [variaveis.txt](./variveis.txt) e [selecao_geografica.txt](selecao_geografica.txt) mostram as opções disponíveis no site.
 
 
 ## Tecnologias
 
 Código escrito totalmente em Python.  
-Utiliza as bibliotecas urllib, pandas e time
+Utiliza as bibliotecas urllib, pandas, time e tqdm,

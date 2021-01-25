@@ -16,14 +16,9 @@ def CECADscraping(lista_UF, lista_dados, lista_municipios):
                           [lista_municipios['UF'] == uf_ibge].tolist())
     runs = runs * len(lista_dados)
     pbar = tqdm(total=runs)
-    # dfs_familia = []
-    # dfs_pessoa = []
-    # estados = []
-    # infos = []
     writer = pd.ExcelWriter('output.xlsx', engine='xlsxwriter')
     for uf_ibge in (lista_UF):
-        lista_municipios_UF = lista_municipios['Código Município Completo'][lista_municipios['UF'] == uf_ibge].tolist(
-        )
+        lista_municipios_UF = lista_municipios['Código Município Completo'][lista_municipios['UF'] == uf_ibge].tolist()
 
         for dado in (lista_dados):
             var1 = dado
@@ -70,7 +65,7 @@ def CECADscraping(lista_UF, lista_dados, lista_municipios):
     pbar.close()
 
 
-# %% teste da função
+# %% Rodando a função
 if __name__ == '__main__':
     lista_municipios = pd.read_excel("./RELATORIO_DTB_BRASIL_MUNICIPIO.xls")
     lista_UF = [12, 16]
