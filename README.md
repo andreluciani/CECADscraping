@@ -6,5 +6,5 @@ Código para obter dados do site do [cadastro único](https://cecad.cidadania.go
 
 ## Autores
 
-André Luciani da Silva @andreluciani
+André Luciani da Silva @andreluciani  
 Ricardo Raspini Motta @ricardormotta
