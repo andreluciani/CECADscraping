@@ -98,3 +98,51 @@ renda_pessoa.to_excel(writer, sheet_name='FaixaRendaPessoa')
 pop_rua_familia.to_excel(writer, sheet_name='PopRuaFamilia')
 pop_rua_pessoa.to_excel(writer, sheet_name='PopRuaPessoa')
 writer.save()
+#%%
+lista_UF=[35,12]
+lista_dados = ['fx_rfpc','marc_sit_rua']
+def CECADscraping(lista_UF,lista_dados)
+    dfs_familia = []
+    dfs_pessoa = []
+    estados=[]
+    infos=[]
+
+    for i in range(len(lista_UF)):
+        lista_municipios_UF=lista_municipios['Código Município Completo'][lista_municipios['UF']==uf_ibge].tolist()
+
+        for j in range(len(lista_dados)):
+            var1=lista_dados[j]
+            var2=''
+            while k < (len(lista_municipios_UF)):
+                uf_ibge=lista_UF[k]
+                try:
+                    form_data = urllib.parse.urlencode({
+                    'schema': schema,
+                    'uf_ibge': uf_ibge,
+                    'p_ibge': lista_municipios_UF[k],
+                    'var1': var1,
+                    'var2': var2}) 
+
+                    form_data = form_data.encode("utf-8")
+                    page_obj = urllib.request.urlopen(
+                    "https://cecad.cidadania.gov.br/tab_cad_table.php?p_tipo=absoluto",
+                    form_data)
+                    raw_data = page_obj.read().decode("utf-8")
+                    tables_list = pd.read_html(raw_data,index_col=0,thousands='.')  # indexando pela cidade
+                    tab_familia = tables_list[0].dropna()  # separa a primeira tabela
+                    tab_pessoa = tables_list[1].dropna()  # separa a segunda tabela
+                    dados_familia=dados_familia.append(tab_familia.iloc[[0]]) # Cria o df para familia
+                    dados_pessoa=dados_pessoa.append(tab_pessoa.iloc[[0]]) # Cria o df para pessoa
+                    print(i)
+                    i+=1
+                except ValueError:
+                    print('Esperando 10s pra tentar novamente...')
+                    print('Erro na tentativa ' , i)
+                    time.sleep(10)
+                    continue
+
+
+            dfs_familia=dfs_familia.append(dados_familia)
+            dfs_pessoa=dfs_pessoa.append(dados_pessoa)
+            estados=estados.append(lista_municipios['Nome_UF'][lista_municipios['UF']==lista_UF[i]].iloc[[0]].tolist())
+            infos=infos.append(tab_familia.columns[0][0])
