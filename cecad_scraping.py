@@ -19,7 +19,6 @@ def CECADscraping(lista_UF, lista_dados, lista_municipios):
         )
     runs = runs * len(lista_dados)
     pbar = tqdm(total=runs)
-    writer = pd.ExcelWriter("output.xlsx", engine="xlsxwriter")
     for uf_ibge in lista_UF:
         lista_municipios_UF = lista_municipios["Código Município Completo"][
             lista_municipios["UF"] == uf_ibge
@@ -64,31 +63,40 @@ def CECADscraping(lista_UF, lista_dados, lista_municipios):
                     )  # Cria o df para pessoa
                     i += 1
                     pbar.update(1)
-                except ValueError:
+                except:
                     print("Esperando 10s pra tentar novamente...")
                     print("Erro na tentativa ", i)
                     time.sleep(10)
                     continue
-            dados_familia.to_excel(
-                writer,
-                sheet_name=("num_familias_")
-                + var1
-                + dados_familia.iloc[[0]].index[0][:2],
-            )
-            dados_pessoa.to_excel(
-                writer,
-                sheet_name=("num_pessoas_")
-                + var1
-                + dados_pessoa.iloc[[0]].index[0][:2],
-            )
-    writer.save()
-    pbar.close()
 
+            dados_familia.to_csv(
+                ("./output/num_familias_" + 
+                var1 + 
+                dados_familia.iloc[[0]].index[0][:2] + 
+                ".csv"
+                )
+            )
+            dados_pessoa.to_csv(
+                ("./output/num_pessoas_" + 
+                var1 + 
+                dados_familia.iloc[[0]].index[0][:2] + 
+                ".csv"
+                )
+            )
+
+    pbar.close()
 
 # %% Rodando a função
 if __name__ == "__main__":
     lista_municipios = pd.read_excel("./RELATORIO_DTB_BRASIL_MUNICIPIO.xls")
-    lista_UF = [12, 16]
-    lista_dados = ["fx_rfpc", "marc_sit_rua"]
+    lista_UF = [35]
+    lista_dados = [
+        "marc_sit_rua",
+        "cod_est_cadastral_fam",
+        "fx_rft",
+        "fx_rfpc",
+        "marc_pbf",
+        "marc_sit_rua",
+    ]
     CECADscraping(lista_UF, lista_dados, lista_municipios)
 # %%
