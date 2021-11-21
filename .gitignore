@@ -7,3 +7,5 @@
 # Environments
 venv/
 
+# Outputs
+output/*.csv
